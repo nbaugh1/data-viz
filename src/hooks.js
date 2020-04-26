@@ -1,17 +1,15 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react'
+import Axios from 'axios'
 
-function useFetch(url) {
-    const [data, setData] = useState([]);
-    const [loading, setLoading] = useState(true);
-    async function fetchUrl() {
-        const response = await fetch(url);
-        const json = await response.json();
-        setData(json);
-        setLoading(false);
-    }
+export const useFetch = () => {
+    const [data, setData] = useState([])
+    const [loading, setLoading] = useState()
     useEffect(() => {
-        fetchUrl();
-    }, [fetchUrl]);
-    return [data, loading];
+        const fetchData = async () => {
+            const result = await Axios("https://pomber.github.io/covid19/timeseries.json")
+            setData(result.data)
+        }
+        fetchData()
+    }, [])
+    return data
 }
-export { useFetch };
