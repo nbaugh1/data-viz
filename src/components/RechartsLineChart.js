@@ -10,7 +10,7 @@ import {
 
 const RechartsLineChart = ({ data }) => {
     const chartData = []
-    chartData.push(data["US"])
+    chartData.push(data["Germany"])
     return (
         <div>
             <LineChart
@@ -21,6 +21,7 @@ const RechartsLineChart = ({ data }) => {
                 margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
             >
                 <Line type="monotone" dataKey="deaths" stroke="#8884d8" />
+                <CartesianGrid stroke="#ccc" strokeDasharray="2 2" />
                 <XAxis dataKey="date" />
                 <YAxis />
                 <Tooltip />
